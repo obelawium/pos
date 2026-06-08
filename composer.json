@@ -1,0 +1,26 @@
+{
+    "name": "obelaw/ium-domain",
+    "description": "Domain Module for Obelawium ERP",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Obelaw\\Ium\\Domain\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Obelaw\\Ium\\Domain\\Tests\\": "tests/"
+        }
+    },
+    "require": {
+        "php": "^8.2",
+        "obelaw/ium": "dev-main"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Obelaw\\Ium\\Domain\\Providers\\ObelawDomainServiceProvider"
+            ]
+        }
+    }
+}
