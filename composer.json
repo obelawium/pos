@@ -1,6 +1,6 @@
 {
     "name": "obelaw/ium-pos",
-    "description": "Pos Module for Obelawium ERP",
+    "description": "POS Module for Obelawium ERP",
     "license": "MIT",
     "autoload": {
         "psr-4": {
@@ -19,7 +19,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Obelaw\\Ium\\Pos\\Providers\\ObelawPosServiceProvider"
+                "Obelaw\\Ium\\Pos\\Providers\\ObelawPOSTerviceProvider"
             ]
         }
     }

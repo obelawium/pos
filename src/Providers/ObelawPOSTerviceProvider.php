@@ -9,11 +9,14 @@ use Illuminate\Support\ServiceProvider;
 use Obelaw\Ium\Pos\Services\PosService;
 use Obelaw\Ium\ObelawiumManager;
 
-final class ObelawPosServiceProvider extends ServiceProvider
+final class ObelawPOSTerviceProvider extends ServiceProvider
 {
     public function register(): void
     {
-        $this->mergeConfigFrom(__DIR__ . '/../../config/pos.php', 'ium.pos');
+        $this->mergeConfigFrom(
+            __DIR__ . '/../../config/pos.php',
+            'ium.pos',
+        );
 
         ObelawiumManager::macro('pos', fn() => app(PosService::class));
     }
@@ -28,6 +31,6 @@ final class ObelawPosServiceProvider extends ServiceProvider
             ], 'ium-pos-config');
         }
 
-        AboutCommand::add('Obelawium', fn() => ['Obelawium Pos' => '0.1.0']);
+        AboutCommand::add('Obelawium', fn() => ['Obelawium POS' => '0.1.0']);
     }
 }
