@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Obelaw\Ium\Domain\Services;
+namespace Obelaw\Ium\Pos\Services;
 
-final class DomainService
+final class PosService
 {
     public function records(): RecordManagementService
     {

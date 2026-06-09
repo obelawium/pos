@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use Obelaw\Ium\Domain\Base\MigrationBase;
+use Obelaw\Ium\Pos\Base\MigrationBase;
 
 return new class extends MigrationBase
 {
     public function up(): void
     {
-        Schema::create('ium_domain_records', function (Blueprint $table): void {
+        Schema::create('ium_pos_records', function (Blueprint $table): void {
             $table->id();
             $table->string('key')->unique();
             $table->text('value');
@@ -21,6 +21,6 @@ return new class extends MigrationBase
 
     public function down(): void
     {
-        Schema::dropIfExists('ium_domain_records');
+        Schema::dropIfExists('ium_pos_records');
     }
 };

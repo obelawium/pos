@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Obelaw\Ium\Domain\Data;
+namespace Obelaw\Ium\Pos\Data;
 
 final class RecordData
 {

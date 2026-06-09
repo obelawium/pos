@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace Obelaw\Ium\Domain\Services;
+namespace Obelaw\Ium\Pos\Services;
 
-use Obelaw\Ium\Domain\Data\RecordData;
-use Obelaw\Ium\Domain\Models\DomainRecord;
+use Obelaw\Ium\Pos\Data\RecordData;
+use Obelaw\Ium\Pos\Models\PosRecord;
 
 final class RecordManagementService
 {
     public function store(RecordData $data): bool
     {
-        DomainRecord::updateOrCreate(
+        PosRecord::updateOrCreate(
             ['key' => $data->key],
             $data->toData(),
         );

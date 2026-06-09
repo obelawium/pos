@@ -1,15 +1,15 @@
 {
-    "name": "obelaw/ium-domain",
-    "description": "Domain Module for Obelawium ERP",
+    "name": "obelaw/ium-pos",
+    "description": "Pos Module for Obelawium ERP",
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Obelaw\\Ium\\Domain\\": "src/"
+            "Obelaw\\Ium\\Pos\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Obelaw\\Ium\\Domain\\Tests\\": "tests/"
+            "Obelaw\\Ium\\Pos\\Tests\\": "tests/"
         }
     },
     "require": {
@@ -19,7 +19,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Obelaw\\Ium\\Domain\\Providers\\ObelawDomainServiceProvider"
+                "Obelaw\\Ium\\Pos\\Providers\\ObelawPosServiceProvider"
             ]
         }
     }

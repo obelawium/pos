@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Obelaw\Ium\Domain\Models;
+namespace Obelaw\Ium\Pos\Models;
 
-use Obelaw\Ium\Domain\Base\ModelBase;
+use Obelaw\Ium\Pos\Base\ModelBase;
 
-final class DomainRecord extends ModelBase
+final class PosRecord extends ModelBase
 {
-    protected $table = 'ium_domain_records';
+    protected $table = 'ium_pos_records';
 
     protected $fillable = [
         'key',
