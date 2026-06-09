@@ -10,17 +10,16 @@ return new class extends MigrationBase
 {
     public function up(): void
     {
-        Schema::create('ium_pos_records', function (Blueprint $table): void {
+        Schema::create($this->prefix . 'terminal_staff', function (Blueprint $table): void {
             $table->id();
-            $table->string('key')->unique();
-            $table->text('value');
-            $table->json('extra_custom')->nullable();
+            $table->foreignId('terminal_id')->constrained($this->prefix . 'terminals')->cascadeOnDelete();
+            $table->foreignId('staff_id')->constrained('users')->cascadeOnDelete();
             $table->timestamps();
         });
     }
 
     public function down(): void
     {
-        Schema::dropIfExists('ium_pos_records');
+        Schema::dropIfExists($this->prefix . 'terminal_staff');
     }
 };

@@ -8,10 +8,5 @@ use Obelaw\Ium\Bases\ModelBase as IumModelBase;
 
 abstract class ModelBase extends IumModelBase
 {
-    /**
-     * Table postfix.
-     *
-     * @var string|null $module
-     */
     protected ?string $module = 'pos_';
 }

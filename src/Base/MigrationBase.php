@@ -8,10 +8,5 @@ use Obelaw\Ium\Bases\MigrationBase as IumMigrationBase;
 
 abstract class MigrationBase extends IumMigrationBase
 {
-    /**
-     * Table postfix.
-     *
-     * @var string|null $module
-     */
     protected ?string $module = 'pos_';
 }
