@@ -7,6 +7,8 @@ namespace Obelaw\Ium\Pos\Models;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Obelaw\Ium\Pos\Base\ModelBase;
+use Obelaw\Ium\Pos\Models\Receipt;
+use Obelaw\Ium\Pos\Models\Terminal;
 
 class Session extends ModelBase
 {
@@ -31,11 +33,11 @@ class Session extends ModelBase
 
     public function terminal(): BelongsTo
     {
-        return $this->belongsTo(PosTerminal::class, 'terminal_id');
+        return $this->belongsTo(Terminal::class, 'terminal_id');
     }
 
     public function receipts(): HasMany
     {
-        return $this->hasMany(PosReceipt::class, 'session_id');
+        return $this->hasMany(Receipt::class, 'session_id');
     }
 }

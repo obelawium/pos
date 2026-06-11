@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Obelaw\Ium\Pos\Base\ModelBase;
+use Obelaw\Ium\Pos\Models\Session;
 
 class Terminal extends ModelBase
 {
@@ -25,7 +26,7 @@ class Terminal extends ModelBase
 
     public function sessions(): HasMany
     {
-        return $this->hasMany(PosSession::class, 'terminal_id');
+        return $this->hasMany(Session::class, 'terminal_id');
     }
 
     public function staff(): BelongsToMany

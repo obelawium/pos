@@ -6,8 +6,8 @@ namespace Obelaw\Ium\Pos\Services;
 
 final class PosService
 {
-    public function records(): RecordManagementService
+    public function terminal(): TerminalService
     {
-        return app(RecordManagementService::class);
+        return new TerminalService();
     }
 }

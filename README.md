@@ -30,6 +30,8 @@ src/
 
 ## Usage
 
+### Records
+
 ```php
 $record = RecordData::fromArray([
     'key'   => 'setting_name',
@@ -38,6 +40,136 @@ $record = RecordData::fromArray([
 ]);
 
 ium()->pos()->records()->store($record);
+```
+
+### Terminals
+
+The Terminal Service manages POS terminals with support for staff assignment, status management, and polymorphic terminalable relationships.
+
+#### Creating Terminals
+
+Terminals must be created using the `TerminalData` DTO for type safety and validation:
+
+```php
+use Obelaw\Ium\Pos\Data\TerminalData;
+
+// Create a simple terminal
+$terminalData = new TerminalData(
+    name: 'Main Counter',
+    status: 'active'
+);
+
+$terminal = ium()->pos()->terminal()->create($terminalData);
+
+// Create a terminal with a polymorphic relationship
+$store = Store::find(1);
+$terminalData = new TerminalData(
+    name: 'Main Counter',
+    status: 'active',
+    terminalable: $store
+);
+
+$terminal = ium()->pos()->terminal()->create($terminalData);
+```
+
+#### Retrieving Terminals
+
+```php
+// Get terminal by ID
+$terminal = ium()->pos()->terminal()->getById(1);
+
+// Get terminal by name
+$terminal = ium()->pos()->terminal()->getByName('Main Counter');
+
+// Get all terminals
+$terminals = ium()->pos()->terminal()->getAll();
+
+// Get terminals paginated
+$paginated = ium()->pos()->terminal()->getPaginated(perPage: 20);
+
+// Get terminals by status
+$activeTerminals = ium()->pos()->terminal()->getByStatus('active');
+
+// Check if terminal exists
+$exists = ium()->pos()->terminal()->exists(1);
+```
+
+#### Updating Terminals
+
+```php
+// Update with TerminalData (recommended)
+$updatedData = new TerminalData(
+    name: 'Updated Counter Name',
+    status: 'active'
+);
+
+ium()->pos()->terminal()->updateFromData($terminal, $updatedData);
+
+// Update raw data
+ium()->pos()->terminal()->update($terminal, [
+    'name' => 'New Name',
+    'status' => 'inactive'
+]);
+```
+
+#### Status Management
+
+```php
+// Activate a terminal
+ium()->pos()->terminal()->activate($terminal);
+
+// Deactivate a terminal
+ium()->pos()->terminal()->deactivate($terminal);
+```
+
+#### Staff Assignment
+
+```php
+// Assign staff to terminal
+$staffId = 5;
+ium()->pos()->terminal()->assignStaff($terminal, $staffId);
+
+// Remove staff from terminal
+ium()->pos()->terminal()->removeStaff($terminal, $staffId);
+
+// Get all staff assigned to terminal
+$staff = ium()->pos()->terminal()->getStaff($terminal);
+```
+
+#### Terminalable Relationships
+
+The terminal supports polymorphic relationships with any model through the `terminalable` association:
+
+```php
+// Attach terminalable to terminal
+$store = Store::find(1);
+ium()->pos()->terminal()->attachTerminalable($terminal, $store);
+
+// Update terminalable relationship
+$newStore = Store::find(2);
+ium()->pos()->terminal()->updateTerminalable($terminal, $newStore);
+
+// Get terminal's terminalable model
+$store = ium()->pos()->terminal()->getTerminalable($terminal);
+
+// Check if terminal has terminalable
+$hasTerminalable = ium()->pos()->terminal()->hasTerminalable($terminal);
+
+// Detach terminalable from terminal
+ium()->pos()->terminal()->detachTerminalable($terminal);
+```
+
+#### Related Data
+
+```php
+// Get all sessions for a terminal
+$sessions = ium()->pos()->terminal()->getSessions($terminal);
+```
+
+#### Deleting Terminals
+
+```php
+$deleted = ium()->pos()->terminal()->delete($terminal);
 ```
 
 ## Installation

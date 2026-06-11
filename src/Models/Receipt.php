@@ -27,6 +27,6 @@ class Receipt extends ModelBase
 
     public function session(): BelongsTo
     {
-        return $this->belongsTo(PosSession::class, 'session_id');
+        return $this->belongsTo(Session::class, 'session_id');
     }
 }
