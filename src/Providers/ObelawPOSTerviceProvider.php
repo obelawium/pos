@@ -6,8 +6,8 @@ namespace Obelaw\Ium\Pos\Providers;
 
 use Illuminate\Foundation\Console\AboutCommand;
 use Illuminate\Support\ServiceProvider;
+use Obelaw\Ium\Facades\Ium;
 use Obelaw\Ium\Pos\Services\PosService;
-use Obelaw\Ium\ObelawiumManager;
 
 final class ObelawPOSTerviceProvider extends ServiceProvider
 {
@@ -18,7 +18,7 @@ final class ObelawPOSTerviceProvider extends ServiceProvider
             'ium.pos',
         );
 
-        ObelawiumManager::macro('pos', fn() => app(PosService::class));
+        Ium::registerDomain('pos', PosService::class);
     }
 
     public function boot(): void
